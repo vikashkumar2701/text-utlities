@@ -6,10 +6,25 @@ export default function App() {
   const [myreversedtext, setmyreversedtext] = useState();
   const [vowels, setvowels] = useState();
   const [consonants, setconsonants] = useState();
+  const [palindrome, setpalindrome] = useState();
   function setCounter() {
     var newform = formid + 1;
     setformid(newform);
     console.log(newform);
+  }
+  function isPalindrome(s) {
+    var n = s.length;
+    let l = 0;
+    let h = n - 1;
+    while (l < h) {
+      if (s[l] != s[h]) {
+        return "Hey, This is not Palindrome";
+      }
+
+      l = l + 1;
+      h = h - 1;
+    }
+    return "Wow! This is Palindrome";
   }
   function handledataforage() {
     var gettext = event.target.value;
@@ -38,8 +53,8 @@ export default function App() {
     setvowels(vowelcounter);
     consonantscounter = gettext.length - vowelcounter;
     setconsonants(consonantscounter);
-
-    console.log(event.target.value);
+    setpalindrome(isPalindrome(event.target.value));
+    // console.log(event.target.value);
   }
 
   return (
@@ -88,6 +103,17 @@ export default function App() {
             class="outputfield"
             value={consonants}
             placeholder="Number of consonants will appear here!"
+          />
+          <button>Copy</button>
+        </div>
+      </div>
+      <div class="wrapper">
+        <span class="msg">Check if this string is palindrome?</span>
+        <div class="outputdwindow">
+          <input
+            class="outputfield"
+            value={palindrome}
+            placeholder="Check palindromic status here"
           />
           <button>Copy</button>
         </div>
