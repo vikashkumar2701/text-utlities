@@ -6,6 +6,7 @@ export default function App() {
   const [myreversedtext, setmyreversedtext] = useState();
   const [vowels, setvowels] = useState();
   const [consonants, setconsonants] = useState();
+  const [nowords, funnoword] = useState();
   const [palindrome, setpalindrome] = useState();
   const [sortedasc, setsortedasc] = useState();
   const [sorteddesc, setsorteddesc] = useState();
@@ -27,6 +28,11 @@ export default function App() {
       h = h - 1;
     }
     return "Wow! This is Palindrome";
+  }
+  function calc(s){
+    let abc=s.split(" ");
+      funnoword(abc.length);
+
   }
 
   function sort_asc_aplhabets(s) {
@@ -93,6 +99,7 @@ export default function App() {
     setpalindrome(isPalindrome(event.target.value));
     setsortedasc(sort_asc_aplhabets(gettext));
     setsorteddesc(sort_desc_aplhabets(gettext));
+    calc(gettext);
     // console.log(event.target.value);
   }
 
@@ -175,6 +182,17 @@ export default function App() {
             className="outputfield"
             value={sorteddesc}
             placeholder="String sorted in descending order will appear here"
+          />
+          <button>Copy</button>
+        </div>
+      </div>
+      <div className="wrapper">
+        <span className="msg">Number of words</span>
+        <div className="outputdwindow">
+          <input
+            className="outputfield"
+            value={nowords}
+            placeholder="Number of words will appear here"
           />
           <button>Copy</button>
         </div>
